@@ -52,7 +52,7 @@ template <> struct IsEdgeDat<TWgtNet> { enum { Val = 1 }; };
 template <class PGraph>
 PWgtNet TWgtNet::MakeFromBipart(const PGraph& Graph, const bool& TakeLeft) {
   PWgtNet Net = TWgtNet::New();
-  for (PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
+  for (typename PGraph::TObj::TNodeI NI = Graph->BegNI(); NI < Graph->EndNI(); NI++) {
     IAssert((NI.GetOutDeg()==0 || NI.GetInDeg()==0) && (NI.GetOutDeg()>0 || NI.GetInDeg()>0)); // is bipartite
     if (TakeLeft) {
       if (NI.GetInDeg()==0) { continue; }
