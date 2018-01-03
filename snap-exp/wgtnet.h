@@ -82,7 +82,7 @@ PWgtNet TWgtNet::MakeFromBipart(const PGraph& Graph, const bool& TakeLeft) {
       }
     }
   }
-  TGBase::PrintInfo(Net);
+  //TGBase::PrintInfo(Net);
   printf("  Edge weight: %f\n", Net->GetEdgeWgt());
   return Net;
 }
