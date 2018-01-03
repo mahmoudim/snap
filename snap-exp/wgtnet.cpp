@@ -173,7 +173,7 @@ PWgtNet TWgtNet::LoadCiteSeerCoAuth(const TStr& FNm) {
       }
     }
   }
-  TGBase::PrintInfo(Net);
+	//TGBase::PrintInfo(Net);
   printf("  Edge weight: %f\n", Net->GetEdgeWgt());
   return Net;
 }
@@ -199,7 +199,7 @@ PWgtNet TWgtNet::LoadDblpCoAuth(const TStr& FNm) {
     if (c % 1000 == 0) { printf("\r%d", c); }
   }
   printf("\n");
-  TGBase::PrintInfo(Net);
+  //TGBase::PrintInfo(Net);
   printf("  Edge weight: %f\n", Net->GetEdgeWgt());
   return Net;
 }
@@ -224,7 +224,7 @@ PWgtNet TWgtNet::LoadArxivCoAuth(const TStr& FNm) {
       }
     }
   }
-  TGBase::PrintInfo(Net);
+  //TGBase::PrintInfo(Net);
   printf("  Edge weight: %f\n", Net->GetEdgeWgt());
   return Net;
 }
@@ -247,7 +247,7 @@ PWgtNet TWgtNet::LoadEveCommNet(const TStr& FNm) {
     if (c % Kilo(10) == 0) { printf("\r%dk", c/1000); }
   }
   printf("\n");
-  TGBase::PrintInfo(Net);
+  //TGBase::PrintInfo(Net);
   printf("  Edge weight: %f\n", Net->GetEdgeWgt());
   return Net;
 }
@@ -313,7 +313,7 @@ void TTop2FriendNet::SetTop2() {
   PNGraph Top1Net = GetTop1Net();
   Top1UF = TUnionFind(Top1Net->GetNodes());
   TCnComV CnComV; 
-  TCnCom::GetWccs(Top1Net, CnComV);
+  TSnap::GetWccs(Top1Net, CnComV);
   for (TWgtNet::TNodeI NI = Net->BegNI(); NI < Net->EndNI(); NI++) {
     Top1UF.Add(NI.GetId());
   }
@@ -370,7 +370,7 @@ int TTop2FriendNet::GetRnd2WccSz(const double ProbPick2nd) const {
       G->AddEdge(NI.GetId(), NId2);
     }
   }
-  TCnCom::GetWccs(G, CnComV);
+  TSnap::GetWccs(G, CnComV);
   return CnComV[0].Len();
 }
 
